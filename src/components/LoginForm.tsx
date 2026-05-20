@@ -4,7 +4,7 @@ import type { FormikHelpers } from 'formik';
 import { loginSchema } from '../schemas';
 import { useNavigate } from 'react-router-dom';
 import type { User } from '../types';
-import { getUsersFromStorage } from '../mocks';
+import { getUsersFromStorage } from '../mocks/data';
 
 type LoginFormValues = User & {
   error?: string;
@@ -20,7 +20,8 @@ const LoginForm = () => {
     if (!foundUser) {
       setErrors({ error: 'Invalid username or password' });
     } else {
-      localStorage.setItem('currentUser', JSON.stringify(user));
+      const currentUser = { username: user.username, password: user.password };
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
       navigate('/');
     }
   };
@@ -71,14 +72,18 @@ const LoginForm = () => {
                   {submitCount > 0 && errors.password ? (
                     <div className='text-danger small'>{errors.password}</div>
                   ) : null}
+
                   {!!errors.error && (
                     <div className='mt-2 mb-3 text-danger'>{errors.error}</div>
                   )}
                 </Form.Group>
+
                 <div className='mb-2 small text-muted'>Данные для входа admin/admin</div>
+
                 <Button type='submit' className='w-100 mb-3'>
                   Login
                 </Button>
+
                 <div className='small'>
                   {"Don't have an account? "}
                   <a className='fw-semibold' href='/register'>

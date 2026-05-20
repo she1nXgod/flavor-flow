@@ -10,6 +10,10 @@
   background-image: url('./assets/LoginBackground.png');
 }
 
+.register-bg {
+  background-image: url('./assets/RegisterBackground.png');
+}
+
 .glass-card {
   background: rgba(255, 255, 255, 0.4) !important;
   backdrop-filter: blur(12px);

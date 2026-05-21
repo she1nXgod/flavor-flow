@@ -71,6 +71,7 @@
 
 .sidebar-card {
   height: 65px;
+  cursor: pointer;
 }
 
 .recipe-img {

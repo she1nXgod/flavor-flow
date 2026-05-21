@@ -10,7 +10,7 @@ type RecipeItemProps = {
 const RecipeItem = ({ recipe }: RecipeItemProps) => {
   const [isLiked, setIsLiked] = useState(recipe.isLiked);
 
-  const handleLikeClick = () => {
+  const handleLikeClick = (): void => {
     setIsLiked(!isLiked);
   };
 

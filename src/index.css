@@ -14,10 +14,61 @@
   background-image: url('./assets/RegisterBackground.png');
 }
 
+.dashboard-bg {
+  background-image: url('./assets/DashboardBackground.png');
+}
+
 .glass-card {
   background: rgba(255, 255, 255, 0.4) !important;
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 16px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+.glass-search-input {
+  background: transparent;
+  border: 1px solid #9c9c9c;
+  border-right: none;
+
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.glass-search-input:focus {
+  background: transparent;
+}
+
+.glass-search-btn {
+  background: transparent;
+  border: 1px solid #9c9c9c;
+  border-left: none;
+
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-exit:hover {
+  background: #d15b6741;
+}
+
+.glass-sidebar {
+  background: rgba(255, 255, 255, 0.267) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+.sidebar-card {
+  height: 65px;
 }

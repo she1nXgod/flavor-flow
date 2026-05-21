@@ -9,7 +9,7 @@ const Layout = ({ children, background }: LayoutProps) => {
   return (
     <Container
       fluid
-      className={`vh-100 d-flex p-0 justify-content-center align-items-center flex-column page-bg ${background}`}
+      className={`vh-100 -100 d-flex p-5 justify-content-center align-items-center flex-column page-bg ${background}`}
     >
       {children}
     </Container>

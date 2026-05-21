@@ -13,7 +13,7 @@ const Dashboard = () => {
           <Sidebar />
         </Col>
 
-        <Col xs={12} md={10} className='border border-primary'>
+        <Col xs={12} md={10}>
           <RecipesList />
         </Col>
       </Row>

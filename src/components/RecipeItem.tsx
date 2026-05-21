@@ -5,9 +5,10 @@ import { useState } from 'react';
 
 type RecipeItemProps = {
   recipe: Recipe;
+  onView: () => void;
 };
 
-const RecipeItem = ({ recipe }: RecipeItemProps) => {
+const RecipeItem = ({ recipe, onView }: RecipeItemProps) => {
   const [isLiked, setIsLiked] = useState(recipe.isLiked);
 
   const handleLikeClick = (): void => {
@@ -39,7 +40,11 @@ const RecipeItem = ({ recipe }: RecipeItemProps) => {
         <Card.Title className='fw-bold fs-6 mb-1'>{recipe.title}</Card.Title>
         <Card.Text className='text-muted small'>{recipe.description}</Card.Text>
 
-        <Button variant='outline-dark' className='rounded-pill mt-auto w-100'>
+        <Button
+          variant='outline-dark'
+          className='rounded-pill mt-auto w-100'
+          onClick={onView}
+        >
           View Recipe
         </Button>
       </Card.Body>

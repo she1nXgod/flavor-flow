@@ -6,9 +6,19 @@ import RecipesList from '../components/RecipesList';
 import RecipeDetails from '../components/RecipeDetails';
 import { Row, Col } from 'react-bootstrap';
 import type { Recipe } from '../mocks/data';
+import { mockRecipes } from '../mocks/data';
 
 const Dashboard = () => {
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
+
+  const [activeCategory, setActiveCategory] = useState<string>('All Recipes');
+
+  const filteredRecipes = mockRecipes.filter((recipe) => {
+    if (activeCategory === 'All Recipes') {
+      return true;
+    }
+    return recipe.category === activeCategory;
+  });
 
   return (
     <Layout background='dashboard-bg'>
@@ -19,11 +29,14 @@ const Dashboard = () => {
       ) : (
         <Row className='d-flex h-100 w-100 m-0'>
           <Col xs={12} md={2} className='glass-sidebar p-3'>
-            <Sidebar />
+            <Sidebar
+              activeCategory={activeCategory}
+              onCategorySelect={setActiveCategory}
+            />
           </Col>
 
           <Col xs={12} md={10} className='p-0'>
-            <RecipesList onRecipeSelect={setSelectedRecipe} />
+            <RecipesList recipes={filteredRecipes} onRecipeSelect={setSelectedRecipe} />
           </Col>
         </Row>
       )}

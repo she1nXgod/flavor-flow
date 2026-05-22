@@ -27,6 +27,7 @@ export type Recipe = {
   cookingTime: string;
   difficulty: string;
   servings: number;
+  category: string;
 };
 
 export const mockRecipes: Recipe[] = [
@@ -54,6 +55,7 @@ export const mockRecipes: Recipe[] = [
     cookingTime: '45 mins',
     difficulty: 'Easy',
     servings: 2,
+    category: 'Pizza',
   },
   {
     id: '2',
@@ -79,6 +81,7 @@ export const mockRecipes: Recipe[] = [
     cookingTime: '10 mins',
     difficulty: 'Easy',
     servings: 1,
+    category: 'Breakfast',
   },
   {
     id: '3',
@@ -105,6 +108,7 @@ export const mockRecipes: Recipe[] = [
     cookingTime: '20 mins',
     difficulty: 'Easy',
     servings: 3,
+    category: 'Breakfast',
   },
   {
     id: '4',
@@ -130,6 +134,7 @@ export const mockRecipes: Recipe[] = [
     cookingTime: '15 mins',
     difficulty: 'Easy',
     servings: 2,
+    category: 'Lunch',
   },
   {
     id: '5',
@@ -154,6 +159,7 @@ export const mockRecipes: Recipe[] = [
     cookingTime: '5 mins',
     difficulty: 'Easy',
     servings: 1,
+    category: 'Desserts',
   },
   {
     id: '6',
@@ -179,6 +185,7 @@ export const mockRecipes: Recipe[] = [
     cookingTime: '25 mins',
     difficulty: 'Easy',
     servings: 2,
+    category: 'Dinner',
   },
   {
     id: '7',
@@ -205,6 +212,7 @@ export const mockRecipes: Recipe[] = [
     cookingTime: '20 mins',
     difficulty: 'Medium',
     servings: 1,
+    category: 'Lunch',
   },
   {
     id: '8',
@@ -231,5 +239,6 @@ export const mockRecipes: Recipe[] = [
     cookingTime: '50 mins',
     difficulty: 'Medium',
     servings: 8,
+    category: 'Desserts',
   },
 ];

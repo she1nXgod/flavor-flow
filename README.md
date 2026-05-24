@@ -1,7 +1,8 @@
-# 🍳 FlavorFlow
+# 🍕 FlavorFlow
 
 ![React](https://img.shields.io/badge/React-19.2-blue?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)
+![SQLite](https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap)
 ![Vite](https://img.shields.io/badge/Vite-4.x-646CFF?logo=vite)
 
@@ -20,7 +21,9 @@
 ```bash
 git clone https://github.com/she1nXgod/flavor-flow.git
 cd flavor-flow
-npm ci
+npm install
+
+node server.js
 npm run dev
 ```
 🌐 Open http://localhost:5173 in your browser to see the app running

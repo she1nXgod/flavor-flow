@@ -12,7 +12,7 @@ const RecipesList = ({ recipes, onRecipeSelect }: RecipesListProps) => {
     <div className='px-3 h-100' style={{ overflowY: 'auto', overflowX: 'hidden' }}>
       {recipes.length === 0 ? (
         <div className='text-center mt-5 text-muted'>
-          <h4>No recipes found in this category.</h4>
+          <h4>No recipes found in this category</h4>
         </div>
       ) : (
         <Row className='g-4'>

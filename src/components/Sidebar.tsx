@@ -7,6 +7,7 @@ type SidebarProps = {
 
 const CATEGORIES = [
   { id: 'All Recipes', label: 'All Recipes', isImage: true },
+  { id: 'Favorites', label: '⭐ Favorites' },
   { id: 'Breakfast', label: '☀ Breakfast' },
   { id: 'Lunch', label: '🍔 Lunch' },
   { id: 'Dinner', label: '🍗 Dinner' },
@@ -20,9 +21,9 @@ const Sidebar = ({ activeCategory, onCategorySelect }: SidebarProps) => {
       {CATEGORIES.map((cat) => (
         <Nav.Item
           key={cat.id}
-          className={`d-flex justify-content-center align-items-center text-center glass-card sidebar-card fw-bold`}
+          className='d-flex justify-content-center align-items-center text-center glass-card sidebar-card fw-bold cursor-pointer'
           onClick={() => onCategorySelect(cat.id)}
-          style={{ opacity: activeCategory === cat.id ? 0.6 : 1 }}
+          style={{ opacity: activeCategory === cat.id ? 1 : 0.6, cursor: 'pointer' }}
         >
           {cat.isImage ? (
             <>

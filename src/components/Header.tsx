@@ -5,6 +5,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleExit = (): void => {
+    localStorage.removeItem('currentUser');
     navigate('/login');
   };
 

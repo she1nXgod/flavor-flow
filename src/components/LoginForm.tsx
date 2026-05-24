@@ -4,7 +4,6 @@ import type { FormikHelpers } from 'formik';
 import { loginSchema } from '../schemas';
 import { useNavigate } from 'react-router-dom';
 import type { User } from '../types';
-import { getUsersFromStorage } from '../mocks/data';
 
 type LoginFormValues = User & {
   error?: string;
@@ -13,16 +12,24 @@ type LoginFormValues = User & {
 const LoginForm = () => {
   const navigate = useNavigate();
 
-  const onSubmit = (user: User, { setErrors }: FormikHelpers<LoginFormValues>): void => {
-    const users = getUsersFromStorage();
-    const foundUser = users.find((u) => u.username === user.username);
+  const onSubmit = async (user: User, { setErrors }: FormikHelpers<LoginFormValues>) => {
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: user.username, password: user.password }),
+      });
 
-    if (!foundUser) {
-      setErrors({ error: 'Invalid username or password' });
-    } else {
-      const currentUser = { username: user.username, password: user.password };
-      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      if (!response.ok) {
+        setErrors({ error: 'Invalid username or password' });
+        return;
+      }
+
+      const userData = await response.json();
+      localStorage.setItem('currentUser', JSON.stringify(userData));
       navigate('/');
+    } catch {
+      setErrors({ error: 'Server connection error' });
     }
   };
 
@@ -32,11 +39,7 @@ const LoginForm = () => {
         <Col xs={11} md={6} lg={5} className='p-5 glass-card'>
           <h2 className='text-center mb-4'>FlavorFlow Login</h2>
           <Formik<LoginFormValues>
-            initialValues={{
-              username: '',
-              password: '',
-              error: '',
-            }}
+            initialValues={{ username: '', password: '', error: '' }}
             validationSchema={loginSchema}
             onSubmit={onSubmit}
           >
@@ -53,9 +56,9 @@ const LoginForm = () => {
                     isInvalid={submitCount > 0 && !!errors.username}
                     autoComplete='username'
                   />
-                  {submitCount > 0 && errors.username ? (
+                  {submitCount > 0 && errors.username && (
                     <div className='text-danger small'>{errors.username}</div>
-                  ) : null}
+                  )}
                 </Form.Group>
 
                 <Form.Group className='mb-4' controlId='formPassword'>
@@ -69,16 +72,13 @@ const LoginForm = () => {
                     isInvalid={submitCount > 0 && !!errors.password}
                     autoComplete='password'
                   />
-                  {submitCount > 0 && errors.password ? (
+                  {submitCount > 0 && errors.password && (
                     <div className='text-danger small'>{errors.password}</div>
-                  ) : null}
-
+                  )}
                   {!!errors.error && (
                     <div className='mt-2 mb-3 text-danger'>{errors.error}</div>
                   )}
                 </Form.Group>
-
-                <div className='mb-2 small text-muted'>Данные для входа admin/admin</div>
 
                 <Button type='submit' className='w-100 mb-3'>
                   Login
@@ -87,7 +87,7 @@ const LoginForm = () => {
                 <div className='small'>
                   {"Don't have an account? "}
                   <a className='fw-semibold' href='/register'>
-                    {'Sign Up'}
+                    Sign Up
                   </a>
                 </div>
               </Form>

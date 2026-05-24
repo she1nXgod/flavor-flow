@@ -1,6 +1,6 @@
 import { Row, Col } from 'react-bootstrap';
 import RecipeItem from './RecipeItem';
-import type { Recipe } from '../mocks/data';
+import type { Recipe } from '../types/index';
 
 type RecipesListProps = {
   recipes: Recipe[];

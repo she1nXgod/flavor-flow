@@ -1,6 +1,6 @@
 import { Card, Button } from 'react-bootstrap';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import type { Recipe } from '../mocks/data';
+import type { Recipe } from '../types/index';
 import { useState } from 'react';
 
 type RecipeItemProps = {

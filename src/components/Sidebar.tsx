@@ -23,7 +23,7 @@ const Sidebar = ({ activeCategory, onCategorySelect }: SidebarProps) => {
           key={cat.id}
           className='d-flex justify-content-center align-items-center text-center glass-card sidebar-card fw-bold cursor-pointer'
           onClick={() => onCategorySelect(cat.id)}
-          style={{ opacity: activeCategory === cat.id ? 1 : 0.6, cursor: 'pointer' }}
+          style={{ opacity: activeCategory === cat.id ? 0.6 : 1 }}
         >
           {cat.isImage ? (
             <>
